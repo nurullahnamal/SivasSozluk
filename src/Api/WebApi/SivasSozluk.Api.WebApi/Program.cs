@@ -1,4 +1,6 @@
 
+using FluentValidation.AspNetCore;
+using SivasSozluk.Api.Application.Extensions;
 using SivasSozluk.Infrastructure.Persistence.Extensions;
 
 namespace SivasSozluk.Api.WebApi;
@@ -8,12 +10,23 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddControllers();
+        builder.Services
+       .AddControllers()
+       .AddJsonOptions(opt =>
+       {
+           opt.JsonSerializerOptions.PropertyNamingPolicy = null;
+       })
+       .AddFluentValidation();
+
+
+
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        builder.Services.AddApplicationRegistration();
         builder.Services.AddInfrastructureRegistration(builder.Configuration);
+
 
         var app = builder.Build();
 

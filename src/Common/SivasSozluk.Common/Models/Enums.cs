@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SivasSozluk.Common.ViewModels
+namespace SivasSozluk.Common.Models
 {
     public enum VoteType
     {

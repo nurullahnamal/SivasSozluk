@@ -1,4 +1,4 @@
-﻿using SivasSozluk.Common.ViewModels;
+﻿using SivasSozluk.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

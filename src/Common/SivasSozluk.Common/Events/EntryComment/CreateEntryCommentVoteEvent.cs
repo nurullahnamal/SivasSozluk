@@ -5,17 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SivasSozluk.Api.Domain.Models
+namespace SivasSozluk.Common.Events.EntryComment
 {
-    public class EntryCommentVote : BaseEntity
+    public class CreateEntryCommentVoteEvent
     {
         public Guid EntryCommentId { get; set; }
 
         public VoteType VoteType { get; set; }
 
-        public Guid CreatedById { get; set; }
-
-
-        public virtual EntryComment EntryComment { get; set; }
+        public Guid CreatedBy { get; set; }
     }
 }
