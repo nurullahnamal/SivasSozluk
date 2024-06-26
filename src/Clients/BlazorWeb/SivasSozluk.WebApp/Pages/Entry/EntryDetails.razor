@@ -9,7 +9,7 @@
     {
         foreach (var comment in comments.Results)
         {
-            <BlazorSozluk.WebApp.Pages.EntryComment.Components.EntryCommmentViewerComponent 
+            <SivasSozluk.WebApp.Pages.EntryComment.Components.EntryCommmentViewerComponent 
                 EntryComment="@comment"
                 />
         }
@@ -23,8 +23,7 @@
             <br/>
             <br/>
 
-            <BlazorSozluk.WebApp.Pages.EntryComment.Components.CreateEntryCommentComponent 
-                EntryId="@entry.Id"
+            <SivasSozluk.WebApp.Pages.EntryComment.Components.CreateEntryCommentComponent EntryId="@entry.Id"
                 EntrySubject="@entry.Subject"
                 OnClicked="@OnCommentCreate"
                     />
