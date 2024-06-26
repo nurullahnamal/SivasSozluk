@@ -5,11 +5,14 @@ using SivasSozluk.Api.Application.Features.Commands.Entry.DeleteVote;
 using SivasSozluk.Common.Models.RequestModels;
 using SivasSozluk.Common.Models;
 using SivasSozluk.Api.Application.Features.Commands.EntryComment.DeleteVote;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SivasSozluk.Api.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
+    [Authorize]
     public class VoteController : BaseController
     {
         private readonly IMediator mediator;

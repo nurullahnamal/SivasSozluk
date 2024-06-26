@@ -20,15 +20,16 @@ namespace SivasSozluk.Api.Application.Mapping
             CreateMap<CreateUserCommand, User>();
 
             CreateMap<UpdateUserCommand, User>();
-            CreateMap<CreateEntryCommand, Entry>()
-       .ReverseMap();
 
-            CreateMap<CreateEntryCommentCommand, EntryComment>()
+            CreateMap<CreateEntryCommand, Entry>()
                 .ReverseMap();
 
             CreateMap<Entry, GetEntriesViewModel>()
-           .ForMember(x => x.CommentCount, y => y.MapFrom(z => z.EntryComments.Count));
+                .ForMember(x => x.CommentCount, y => y.MapFrom(z => z.EntryComments.Count));
 
+
+            CreateMap<CreateEntryCommentCommand, EntryComment>()
+                .ReverseMap();
         }
     }
 }

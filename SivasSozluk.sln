@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SivasSozluk.Projections.Vot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SivasSozluk.Projections.UserService", "src\Projections\SivasSozluk.Projections.UserService\SivasSozluk.Projections.UserService.csproj", "{21DDC1A7-7249-4FC6-9EAD-2C219E076A66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SivasSozluk.WebApp", "src\Clients\BlazorWeb\SivasSozluk.WebApp\SivasSozluk.WebApp.csproj", "{23EDAC72-A0B7-490F-B5C3-BAD0A6A5DEFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SivasSozluk.WebApp", "src\Clients\BlazorWeb\SivasSozluk.WebApp\SivasSozluk.WebApp.csproj", "{23EDAC72-A0B7-490F-B5C3-BAD0A6A5DEFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

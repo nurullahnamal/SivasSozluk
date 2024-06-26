@@ -32,6 +32,8 @@ namespace SivasSozluk.Api.Application.Features.Commands.User.Login
 
         public async Task<LoginUserViewModel> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
+
+            //nurullah@gmail.com   Pass:  Expertion
             var dbUser = await userRepository.GetSingleAsync(i => i.EmailAddress == request.EmailAddress);
 
             if (dbUser == null)

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SivasSozluk.Api.Application.Features.Queries.GetEntries;
@@ -53,6 +54,7 @@ namespace SivasSozluk.Api.WebApi.Controllers
 
         [HttpGet]
         [Route("UserEntries")]
+        [Authorize]
         public async Task<IActionResult> GetUserEntries(string userName, Guid userId, int page, int pageSize)
         {
             if (userId == Guid.Empty && string.IsNullOrEmpty(userName))
@@ -75,6 +77,7 @@ namespace SivasSozluk.Api.WebApi.Controllers
 
         [HttpPost]
         [Route("CreateEntry")]
+        [Authorize]
         public async Task<IActionResult> CreateEntry([FromBody] CreateEntryCommand command)
         {
             if (!command.CreatedById.HasValue)
@@ -87,6 +90,7 @@ namespace SivasSozluk.Api.WebApi.Controllers
 
         [HttpPost]
         [Route("CreateEntryComment")]
+        [Authorize]
         public async Task<IActionResult> CreateEntryComment([FromBody] CreateEntryCommentCommand command)
         {
             if (!command.CreatedById.HasValue)
@@ -106,5 +110,4 @@ namespace SivasSozluk.Api.WebApi.Controllers
 
             return Ok(result);
         }
-    }
-}
+    }    }

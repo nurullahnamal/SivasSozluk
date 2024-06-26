@@ -1,8 +1,10 @@
 ﻿using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using SivasSozluk.Common.Infrastructure.Exceptions;
 using SivasSozluk.Common.Infrastructure.Results;
 using SivasSozluk.Common.Models.Queries;
 using SivasSozluk.Common.Models.RequestModels;
+using SivasSozluk.WebApp.Infrastructure.Auth;
 using SivasSozluk.WebApp.Infrastructure.Extensions;
 using SivasSozluk.WebApp.Infrastructure.Services.Interfaces;
 using System.Net.Http.Json;
@@ -12,14 +14,21 @@ namespace SivasSozluk.WebApp.Infrastructure.Services
 {
     public class IdentityService : IIdentityService
     {
+        private JsonSerializerOptions defaultJsonOpt => new JsonSerializerOptions()
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
         private readonly HttpClient httpClient;
         private readonly ISyncLocalStorageService syncLocalStorageService;
+        private readonly AuthenticationStateProvider authenticationStateProvider;
 
 
-        public IdentityService(HttpClient httpClient, ISyncLocalStorageService syncLocalStorageService)
+        public IdentityService(HttpClient httpClient, ISyncLocalStorageService syncLocalStorageService, AuthenticationStateProvider authenticationStateProvider)
         {
             this.httpClient = httpClient;
             this.syncLocalStorageService = syncLocalStorageService;
+            this.authenticationStateProvider = authenticationStateProvider;
         }
 
 
@@ -50,7 +59,7 @@ namespace SivasSozluk.WebApp.Infrastructure.Services
                 if (httpResponse.StatusCode == System.Net.HttpStatusCode.BadRequest)
                 {
                     responseStr = await httpResponse.Content.ReadAsStringAsync();
-                    var validation = JsonSerializer.Deserialize<ValidationResponseModel>(responseStr);
+                    var validation = JsonSerializer.Deserialize<ValidationResponseModel>(responseStr, defaultJsonOpt);
                     responseStr = validation.FlattenErrors;
                     throw new DatabaseValidationException(responseStr);
                 }
@@ -68,8 +77,7 @@ namespace SivasSozluk.WebApp.Infrastructure.Services
                 syncLocalStorageService.SetUsername(response.UserName);
                 syncLocalStorageService.SetUserId(response.Id);
 
-                //TODO Check after auth
-                //((AuthStateProvider)authStateProvider).NotifyUserLogin(response.UserName, response.Id);
+                ((AuthStateProvider)authenticationStateProvider).NotifyUserLogin(response.UserName, response.Id);
 
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("bearer", response.UserName);
 
@@ -85,8 +93,7 @@ namespace SivasSozluk.WebApp.Infrastructure.Services
             syncLocalStorageService.RemoveItem(LocalStorageExtension.UserName);
             syncLocalStorageService.RemoveItem(LocalStorageExtension.UserId);
 
-            // TODO Check after auth
-            //((AuthStateProvider)authStateProvider).NotifyUserLogout();
+            ((AuthStateProvider)authenticationStateProvider).NotifyUserLogout();
             httpClient.DefaultRequestHeaders.Authorization = null;
         }
     }
