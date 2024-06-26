@@ -30,6 +30,12 @@ public class Program
         builder.Services.AddApplicationRegistration();
         builder.Services.AddInfrastructureRegistration(builder.Configuration);
 
+        builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        }));
 
         var app = builder.Build();
 
@@ -47,7 +53,7 @@ public class Program
         app.UseAuthentication();
 
         app.UseAuthorization();
-
+        app.UseCors("MyPolicy");
 
         app.MapControllers();
 

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -16,6 +16,12 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Common\SivasSozluk.Common\SivasSozluk.Common.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\css\bootstrap\" />
+	  <Folder Include="wwwroot\css\open-iconic\font\css\" />
+	  <Folder Include="wwwroot\css\open-iconic\font\fonts\" />
 	</ItemGroup>
 
 </Project>
