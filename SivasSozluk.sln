@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SivasSozluk.Projections.Vot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SivasSozluk.Projections.UserService", "src\Projections\SivasSozluk.Projections.UserService\SivasSozluk.Projections.UserService.csproj", "{21DDC1A7-7249-4FC6-9EAD-2C219E076A66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SivasSozluk.WebApi", "src\Clients\BlazorWeb\SivasSozluk.WebApi\SivasSozluk.WebApi.csproj", "{E865B6ED-1420-4BC2-8FAB-CF98AA4E788F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SivasSozluk.WebApp", "src\Clients\BlazorWeb\SivasSozluk.WebApp\SivasSozluk.WebApp.csproj", "{23EDAC72-A0B7-490F-B5C3-BAD0A6A5DEFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,10 +77,10 @@ Global
 		{21DDC1A7-7249-4FC6-9EAD-2C219E076A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21DDC1A7-7249-4FC6-9EAD-2C219E076A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21DDC1A7-7249-4FC6-9EAD-2C219E076A66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E865B6ED-1420-4BC2-8FAB-CF98AA4E788F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E865B6ED-1420-4BC2-8FAB-CF98AA4E788F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E865B6ED-1420-4BC2-8FAB-CF98AA4E788F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E865B6ED-1420-4BC2-8FAB-CF98AA4E788F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23EDAC72-A0B7-490F-B5C3-BAD0A6A5DEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23EDAC72-A0B7-490F-B5C3-BAD0A6A5DEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23EDAC72-A0B7-490F-B5C3-BAD0A6A5DEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23EDAC72-A0B7-490F-B5C3-BAD0A6A5DEFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,7 +102,7 @@ Global
 		{1C8E56A0-8013-4698-9DA0-8C9BAD38182B} = {968B9768-6BC5-47B8-B865-85D837D0DC12}
 		{B55A38A6-FDC2-4D2C-95B3-A67728CC3621} = {968B9768-6BC5-47B8-B865-85D837D0DC12}
 		{21DDC1A7-7249-4FC6-9EAD-2C219E076A66} = {968B9768-6BC5-47B8-B865-85D837D0DC12}
-		{E865B6ED-1420-4BC2-8FAB-CF98AA4E788F} = {66125D0A-DCEA-4CDA-9236-52A326A950BE}
+		{23EDAC72-A0B7-490F-B5C3-BAD0A6A5DEFF} = {66125D0A-DCEA-4CDA-9236-52A326A950BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A858655E-C238-45A8-A6E7-9D8E110245A3}

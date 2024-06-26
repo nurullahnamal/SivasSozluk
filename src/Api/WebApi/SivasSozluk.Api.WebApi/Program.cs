@@ -1,6 +1,7 @@
 
 using FluentValidation.AspNetCore;
 using SivasSozluk.Api.Application.Extensions;
+using SivasSozluk.Api.WebApi.Infrastructure.Extensions;
 using SivasSozluk.Infrastructure.Persistence.Extensions;
 
 namespace SivasSozluk.Api.WebApi;
@@ -24,6 +25,8 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        builder.Services.ConfigureAuth(builder.Configuration);
+
         builder.Services.AddApplicationRegistration();
         builder.Services.AddInfrastructureRegistration(builder.Configuration);
 
@@ -38,6 +41,10 @@ public class Program
             app.UseSwaggerUI();
         }
         app.UseHttpsRedirection();
+
+        app.ConfigureExceptionHandling(app.Environment.IsDevelopment());
+
+        app.UseAuthentication();
 
         app.UseAuthorization();
 
