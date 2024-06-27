@@ -1,6 +1,7 @@
 using SivasSozluk.Common.Events.Entry;
 using SivasSozluk.Common.Infrastructure;
 using SivasSozluk.Common;
+using SivasSozluk.Common.Events.EntryComment;
 
 namespace SivasSozluk.Projections.FavoriteService
 {
@@ -31,6 +32,39 @@ namespace SivasSozluk.Projections.FavoriteService
                     _logger.LogInformation($"Received EntryId {fav.EntryId}");
                 })
                 .StartConsuming(SozlukConstants.CreateEntryFavQueueName);
+
+            QueueFactory.CreateBasicConsumer()
+                .EnsureExchange(SozlukConstants.FavExchangeName)
+                .EnsureQueue(SozlukConstants.DeleteEntryFavQueueName, SozlukConstants.FavExchangeName)
+                .Receive<DeleteEntryFavEvent>(fav =>
+                {
+                    favService.DeleteEntryFav(fav).GetAwaiter().GetResult();
+                    _logger.LogInformation($"Deleted Received EntryId {fav.EntryId}");
+                })
+                .StartConsuming(SozlukConstants.DeleteEntryFavQueueName);
+
+
+
+            QueueFactory.CreateBasicConsumer()
+                .EnsureExchange(SozlukConstants.FavExchangeName)
+                .EnsureQueue(SozlukConstants.CreateEntryCommentFavQueueName, SozlukConstants.FavExchangeName)
+                .Receive<CreateEntryCommentFavEvent>(fav =>
+                {
+                    favService.CreateEntryCommentFav(fav).GetAwaiter().GetResult();
+                    _logger.LogInformation($"Create EntryComment Received EntryCommentId {fav.EntryCommentId}");
+                })
+                .StartConsuming(SozlukConstants.CreateEntryCommentFavQueueName);
+
+
+            QueueFactory.CreateBasicConsumer()
+                .EnsureExchange(SozlukConstants.FavExchangeName)
+                .EnsureQueue(SozlukConstants.DeleteEntryCommentFavQueueName, SozlukConstants.FavExchangeName)
+                .Receive<DeleteEntryCommentFavEvent>(fav =>
+                {
+                    favService.DeleteEntryCommentFav(fav).GetAwaiter().GetResult();
+                    _logger.LogInformation($"Deleted Received EntryCommentId {fav.EntryCommentId}");
+                })
+                .StartConsuming(SozlukConstants.DeleteEntryCommentFavQueueName);
         }
     }
 }
